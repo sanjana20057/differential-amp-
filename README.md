@@ -98,7 +98,7 @@ Procedure for Performing DC Analysis:
   Procedure for Performing Transient Analysis:
 
   
-	1.	To conduct transient analysis, apply a sine wave input with an offset voltage of 1.2V, an amplitude of 50mV, and a frequency of 1 kHz to both gate voltage sources, then observe the circuit’s response.
+1.	To conduct transient analysis, apply a sine wave input with an offset voltage of 1.2V, an amplitude of 50mV, and a frequency of 1 kHz to both gate voltage sources, then observe the circuit’s response.
 
 
  ![WhatsApp Image 2025-03-06 at 20 02 24_d14e639b](https://github.com/user-attachments/assets/2fa38552-0382-468b-9f3a-3460564abd2b)
@@ -112,9 +112,58 @@ Procedure for Performing DC Analysis:
 
 
   AC Analysis:
+  
+  AC analysis evaluates the circuit’s frequency response, showing how gain, phase shift, and bandwidth vary with different input frequencies. This helps assess the amplifier’s real-world performance, ensuring stable gain and proper operation within the desired frequency range. AC analysis is also used to verify the gain obtained from transient analysis. In this process, the same sinusoidal signal is applied to the gate terminals, with the small-signal AC analysis amplitude set to 1, before running the simulation.
 
 
   ![ac](https://github.com/user-attachments/assets/d1aad008-1bf5-46f0-9c02-85fc9327a570)
+
+Circuit 2
+
+Resistor R_SS is replaced with a 1 mA current source to analyze the circuit.In a MOS differential amplifier, replacing the resistor with a current source enhances both gain and performance. A current source provides high output resistance, which increases the amplifier’s gain. It also ensures a stable and constant current flow, making the circuit more efficient and less sensitive to variations in power supply or transistor parameters. Additionally, a current source improves common-mode signal rejection, enhancing the amplifier’s differential performance. By maintaining a steady current, it reduces distortion and improves overall signal quality.
+
+![2](https://github.com/user-attachments/assets/6c1bffa5-22fa-42f1-b692-5dafd5bb8f75)
+
+
+DC Analysis:
+
+![dc r](https://github.com/user-attachments/assets/c7dc9575-9f32-4a33-b8a6-d6847ba44e0f)
+
+
+there is no much changes observed when we replace resistor by current source,only thing that gets enhanced is stability of the Vp.
+
+
+Transien Analysis :
+
+![transient 2](https://github.com/user-attachments/assets/66eb82ad-bb7b-4f4c-80ae-f0f1375d4487)
+
+DC offset=1.2V
+
+Amplitude=50m
+
+Frequency= 1khz
+
+We can see 180 degeree phse shift can be seen with respect to input. The gain is Vout by Vin which is nearly equal to 4(Av). Finally dB=20log(Av) = 12dB approximatly.
+
+
+AC Analysis :
+
+![ac 2](https://github.com/user-attachments/assets/6ab38786-966d-497b-bc34-2d8412135f3d)
+
+
+n this setup, the same sinusoidal signal is applied to the gate terminals with a small-signal AC analysis amplitude of 1, followed by simulation. Comparing the results with the previous circuit that included resistor R_SS, we observe that the gain remains nearly unchanged, with only a negligible variation.
+
+Circuit 3
+
+In this setup, we replace resistor R_SS with an N-channel MOSFET to analyze the circuit’s behavior. In a MOS differential amplifier, swapping the resistor for a MOSFET acting as a current source helps improve performance. The MOSFET provides high output resistance, which boosts gain, while also maintaining a stable and constant current, ensuring better biasing and making the circuit less sensitive to power supply variations. Additionally, using a MOSFET instead of a resistor saves space in IC design and enhances common-mode signal rejection, making the amplifier more efficient. This experiment demonstrates how the MOSFET effectively functions as a constant current source.
+
+
+
+
+
+
+
+  
 
 
 
