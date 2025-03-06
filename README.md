@@ -6,6 +6,31 @@ What is a Differential Amplifier??
 
    a Differential Amplifier is a type of amplifier which amplifies the dfference between two input  voltages and eleminates any common voltages that lies between the inputs. It has two inputs and one common output.This is why the differential amplifier is also known as a difference amplifier – the difference between the input voltages is amplified.
 
+   The MOS differential pair is an amplifier configuration consisting of two identical, perfectly matched MOSFETs with equal source resistances and shared or matching inputs. The output voltage is determined by the difference between the drain voltages (V_D) of the two MOSFETs.
+
+Differential amplifiers amplify the difference between two input signals rather than a single input, offering several advantages:
+
+1.	They are more efficient compared to single MOSFET amplifiers.
+ 
+2.	Due to their cancellation properties, they reject unwanted noise, known as common-mode noise, from the circuit.
+ 
+3.	They inherently suppress interference that appears in both input signals, improving signal integrity.
+ 
+4.	Common-mode signals, such as DC offsets present in both inputs, are rejected, allowing the amplifier to focus only on the desired signal. This is especially useful in IC design, as it eliminates the need for bulky DC-blocking capacitors.
+ 
+5.	The subtraction performed by the differential pair makes it ideal for integration into negative-feedback amplifiers, significantly enhancing performance.
+
+
+While these advantages might seem to come with major drawbacks, IC fabrication largely mitigates them. The higher component count is not a concern in IC design due to the minimal cost of adding transistors. Additionally, the requirement for matched components is effectively addressed through modern fabrication techniques, ensuring consistent component characteristics.
+
+While a differential pair can also be constructed using BJTs, this experiment focuses specifically on MOSFETs. Since the differential amplifier (diff-amp) serves as the fundamental building block of an operational amplifier (op-amp), understanding its operation is crucial for gaining deeper insight into op-amps.
+
+In practical applications, the current-source symbol would typically represent a circuit that generates a constant current. (For more details, refer to The Basic MOSFET Constant-Current Source.) However, to simplify our introductory analysis, we will use an ideal current source in our simulations instead of a practical constant-current circuit.
+
+In an actual IC implementation, resistors would be replaced by a current mirror, which functions as an “active load.” However, to clearly understand the fundamental operation of the differential pair, we will first examine the resistor-based version.
+
+For optimal performance, the differential pair relies on balance. This means the MOSFETs and resistors must be properly matched—both transistors should have identical channel dimensions, and the resistors should be equal, ensuring that R1 is the same as R2. The chosen resistance value for these resistors is referred to as R_D. 
+
   ![image](https://github.com/user-attachments/assets/3f7301d6-edda-4747-ab61-d38530ffa038)
 
 EXPERIMENT 3:
@@ -49,8 +74,56 @@ Id>= P/Vdd (because P<= 2.2mA)
 
   DC Analysis:
 
+  DC analysis examines a circuit’s behavior when a direct current (constant voltage) is applied. It helps determine key values such as current and voltage under steady-state conditions, where the circuit remains stable over time. This analysis reveals the operating points of transistors, including node voltages and current flow. Proper biasing is essential to ensure the amplifier functions in the correct region (saturation for MOSFETs), delivering the expected gain and performance.
+
+Procedure for Performing DC Analysis:
+ 1.	Set appropriate values for the MOSFET’s length and width to ensure the desired current flows through each branch. For optimal operation, use a length of 180 nm and a width of 6.41246 μm.
+
+
+
+![image](https://github.com/user-attachments/assets/66c1f09c-cb8c-4ec4-9f94-167aeb46225f)
+
+
+ 2.	Choose the DC operating point (DC op pnt) in the Edit Simulation Command and run the simulation. The figure below displays the values obtained from the DC analysis.From the figure above, we observe that the obtained current (I_DD) is 0.5 mA, which aligns with the design specifications for V_OCM and V_P. To verify this, we calculate the power using the formula P = V × I, ensuring that P ≤ 2.2 × 1m = 2.2 mW. This confirms that the power rating meets the requirement of 2.2 mW or lower.
+
 
   ![DC](https://github.com/user-attachments/assets/3266727d-d56e-442b-8684-b8b5f41d53d9)
+
+
+
+  Transient Analysis:
+
+  Transient analysis examines how the circuit responds to time-varying input signals. It allows us to observe key aspects of the amplifier’s performance, such as signal amplification, settling time, and transient distortions. This analysis is essential for evaluating how the circuit handles real-world signals and ensuring it produces the expected output without delays or unwanted oscillations.
+
+  Procedure for Performing Transient Analysis:
+
+  
+	1.	To conduct transient analysis, apply a sine wave input with an offset voltage of 1.2V, an amplitude of 50mV, and a frequency of 1 kHz to both gate voltage sources, then observe the circuit’s response.
+
+
+ ![WhatsApp Image 2025-03-06 at 20 02 24_d14e639b](https://github.com/user-attachments/assets/2fa38552-0382-468b-9f3a-3460564abd2b)
+
+
+ 2.	Select Transient Analysis in the Edit Simulation Command, set the stop time to 5 ms, and run the simulation. Observe the graph of V_OCM (output) versus the input gate voltage to analyze the circuit’s behavior.
+
+
+  ![transient](https://github.com/user-attachments/assets/d2bfa751-4377-43c4-abfa-ca6cfc10b880)
+
+
+
+  AC Analysis:
+
+
+  ![ac](https://github.com/user-attachments/assets/d1aad008-1bf5-46f0-9c02-85fc9327a570)
+
+
+
+  
+
+
+  
+
+
 
   
 
