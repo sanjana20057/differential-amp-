@@ -52,6 +52,8 @@ Id>= P/Vdd (because P<= 2.2mA)
 
   ![DC](https://github.com/user-attachments/assets/3266727d-d56e-442b-8684-b8b5f41d53d9)
 
+  
+
 
    
 
