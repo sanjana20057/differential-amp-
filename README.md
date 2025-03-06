@@ -72,6 +72,8 @@ Id>= P/Vdd (because P<= 2.2mA)
    
    =400 ohm
 
+> Circuit 1:
+
   DC Analysis:
 
   DC analysis examines a circuit’s behavior when a direct current (constant voltage) is applied. It helps determine key values such as current and voltage under steady-state conditions, where the circuit remains stable over time. This analysis reveals the operating points of transistors, including node voltages and current flow. Proper biasing is essential to ensure the amplifier functions in the correct region (saturation for MOSFETs), delivering the expected gain and performance.
@@ -118,7 +120,7 @@ Procedure for Performing DC Analysis:
 
   ![ac](https://github.com/user-attachments/assets/d1aad008-1bf5-46f0-9c02-85fc9327a570)
 
-Circuit 2
+> Circuit 2
 
 Resistor R_SS is replaced with a 1 mA current source to analyze the circuit.In a MOS differential amplifier, replacing the resistor with a current source enhances both gain and performance. A current source provides high output resistance, which increases the amplifier’s gain. It also ensures a stable and constant current flow, making the circuit more efficient and less sensitive to variations in power supply or transistor parameters. Additionally, a current source improves common-mode signal rejection, enhancing the amplifier’s differential performance. By maintaining a steady current, it reduces distortion and improves overall signal quality.
 
@@ -153,9 +155,55 @@ AC Analysis :
 
 n this setup, the same sinusoidal signal is applied to the gate terminals with a small-signal AC analysis amplitude of 1, followed by simulation. Comparing the results with the previous circuit that included resistor R_SS, we observe that the gain remains nearly unchanged, with only a negligible variation.
 
-Circuit 3
+> Circuit 3
 
 In this setup, we replace resistor R_SS with an N-channel MOSFET to analyze the circuit’s behavior. In a MOS differential amplifier, swapping the resistor for a MOSFET acting as a current source helps improve performance. The MOSFET provides high output resistance, which boosts gain, while also maintaining a stable and constant current, ensuring better biasing and making the circuit less sensitive to power supply variations. Additionally, using a MOSFET instead of a resistor saves space in IC design and enhances common-mode signal rejection, making the amplifier more efficient. This experiment demonstrates how the MOSFET effectively functions as a constant current source.
+
+
+![3](https://github.com/user-attachments/assets/5b0521ec-c9bc-49d7-92a7-0cb170e445ef)
+
+
+DC Analysis:
+
+ 
+Set appropriate values for the MOSFET’s length and width to ensure the desired current flows through each branch. For optimal operation, use a length of 180 nm and a width of 6.89912 μm. In the Edit Simulation Command, select the DC operating point (DC op pnt) and run the simulation to analyze the circuit’s behavior.  
+
+
+![WhatsApp Image 2025-03-06 at 23 58 45_c2e161a4](https://github.com/user-attachments/assets/b1c60b50-2df7-4f36-a1ff-c537f813297b)
+
+
+
+Transient Analysis:
+
+
+![t3](https://github.com/user-attachments/assets/a304559e-825e-473f-8e87-af930f4e8761)
+
+
+AC Analysis:
+
+
+![ac3](https://github.com/user-attachments/assets/3e0ab7e0-746f-447f-968a-7af5d7e86688)
+
+
+
+> INFERENCE:
+
+In this experiment, we explored how a differential amplifier works and learned how to design one using LTSpice. One of the key takeaways was seeing firsthand how the amplifier rejects common-mode signals while amplifying differential-mode signals, making it a fundamental building block for operational amplifiers (op-amps).
+
+
+We tested three different configurations:
+
+1.	A resistor (R_SS) as the tail current source
+ 
+2.	A dedicated current source (I_SS)
+ 
+3.	An NMOS transistor biased as a current source in saturation
+
+
+Among these, the NMOS current source configuration provided the highest gain (12.067 dB). However, its frequency response was unstable, showing fluctuations before the midband—possibly due to the characteristics of the NMOS transistor. The current source (I_SS) configuration offered stable current values, closely matching theoretical expectations, and was less sensitive to temperature variations. The R_SS configuration was also effective, but since resistances can fluctuate with temperature changes and tolerance errors, it introduced some variability in current levels, which could impact the circuit’s power budget.
+
+
+Overall, the differential amplifier proved to be a powerful circuit, as it measures voltage differences at the drains, effectively minimizing noise. One crucial factor in ensuring good performance is using two perfectly matched N-channel MOSFETs. In LTSpice, this was straightforward to achieve by leveraging the 180 nm TSMC .lib technology file.
 
 
 
